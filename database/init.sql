@@ -9,7 +9,7 @@ CREATE TABLE `offices` (
   `city` varchar(50) NOT NULL,
   `state` varchar(50) NOT NULL,
   PRIMARY KEY (`office_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 INSERT INTO `offices` VALUES (1,'03 Reinke Trail','Cincinnati','OH');
 INSERT INTO `offices` VALUES (2,'5507 Becker Terrace','New York City','NY');
 INSERT INTO `offices` VALUES (3,'54 Northland Court','Richmond','VA');
@@ -36,7 +36,7 @@ CREATE TABLE `employees` (
   KEY `fk_employees_employees_idx` (`reports_to`),
   CONSTRAINT `fk_employees_managers` FOREIGN KEY (`reports_to`) REFERENCES `employees` (`employee_id`),
   CONSTRAINT `fk_employees_offices` FOREIGN KEY (`office_id`) REFERENCES `offices` (`office_id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 INSERT INTO `employees` VALUES (37270,'Yovonnda','Magrannell','Executive Secretary',63996,NULL,10);
 INSERT INTO `employees` VALUES (33391,'D\'arcy','Nortunen','Account Executive',62871,37270,1);
 INSERT INTO `employees` VALUES (37851,'Sayer','Matterson','Statistician III',98926,37270,1);
@@ -60,3 +60,4 @@ INSERT INTO `employees` VALUES (96513,'Theresa','Binney','Food Chemist',47354,37
 INSERT INTO `employees` VALUES (98374,'Estrellita','Daleman','Staff Accountant IV',70187,37270,5);
 INSERT INTO `employees` VALUES (115357,'Ivy','Fearey','Structural Engineer',92710,37270,5);
 
+    
