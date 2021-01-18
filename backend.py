@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+from flask import Flask, json
 
 mydb = mysql.connector.connect(
     host = os.environ['MYSQL_HOST'],
@@ -9,12 +10,28 @@ mydb = mysql.connector.connect(
     database = os.environ['MYSQL_DATABASE']
 )
 
-mycursor = mydb.cursor()
 
-sql = "UPDATE employees SET first_name = 'asdwq' WHERE employee_id = '33391'"
 
-mycursor.execute(sql)
+#sql = "UPDATE employees SET first_name = 'asdwq' WHERE employee_id = '33391'"
 
-mydb.commit()
 
-print(mycursor.rowcount, "record(s) affected")
+
+
+#mydb.commit()
+
+#print(mycursor.rowcount, "record(s) affected")
+
+
+
+api = Flask(__name__)
+
+@api.route('/employees', methods=['GET'])
+def get_employees():
+    mycursor = mydb.cursor()
+    sql = "SELECT * FROM employees"
+    mycursor.execute(sql)
+    employees = mycursor.fetchall()
+    return json.dumps(employees)
+
+if __name__ == '__main__':
+    api.run()
