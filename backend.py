@@ -34,4 +34,4 @@ def get_employees():
     return json.dumps(employees)
 
 if __name__ == '__main__':
-    api.run(host=os.environ('URL'), port=os.environ('PORT'))
+    api.run(host=os.environ['URL'], port=os.environ['PORT'])
